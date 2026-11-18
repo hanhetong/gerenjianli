@@ -6,12 +6,27 @@ export default function Footer() {
   const year = new Date().getFullYear()
   const videoRef = useRef(null)
 
+  const setVideo = (el) => {
+    videoRef.current = el
+    if (!el) return
+    el.muted = true
+    el.defaultMuted = true
+    el.setAttribute('playsinline', '')
+    el.setAttribute('webkit-playsinline', '')
+    el.setAttribute('x5-playsinline', '')
+    el.setAttribute('x5-video-player-type', 'h5-page')
+  }
+
   useEffect(() => {
     const v = videoRef.current
-    if (v) {
-      v.muted = true
-      v.defaultMuted = true
-      v.play().catch(() => {})
+    if (!v) return
+    v.play().catch(() => {})
+    const resume = () => { v.play().catch(() => {}) }
+    window.addEventListener('touchstart', resume, { once: true })
+    window.addEventListener('pointerdown', resume, { once: true })
+    return () => {
+      window.removeEventListener('touchstart', resume)
+      window.removeEventListener('pointerdown', resume)
     }
   }, [])
 
@@ -19,9 +34,10 @@ export default function Footer() {
     <section id="contact" className="footer">
       <div className="footer-bg" aria-hidden="true">
         <video
-          ref={videoRef}
+          ref={setVideo}
           className="footer-video"
           src={`${import.meta.env.BASE_URL}videos/contact.mp4`}
+          poster={`${import.meta.env.BASE_URL}images/contact-poster.jpg`}
           autoPlay
           muted
           loop

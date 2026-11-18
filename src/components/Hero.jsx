@@ -14,6 +14,18 @@ export default function Hero() {
   const bgRef = useRef(null)
   const particlesRef = useRef(null)
   const spotlightRef = useRef(null)
+  const videoRef = useRef(null)
+
+  const setVideo = (el) => {
+    videoRef.current = el
+    if (!el) return
+    el.muted = true
+    el.defaultMuted = true
+    el.setAttribute('playsinline', '')
+    el.setAttribute('webkit-playsinline', '')
+    el.setAttribute('x5-playsinline', '')
+    el.setAttribute('x5-video-player-type', 'h5-page')
+  }
 
   useEffect(() => {
     let raf = 0
@@ -41,10 +53,14 @@ export default function Hero() {
   }, [])
 
   useEffect(() => {
-    const v = bgRef.current && bgRef.current.querySelector('video')
-    if (v) {
-      v.muted = true
-      v.defaultMuted = true
+    const v = videoRef.current
+    if (!v) return
+    const resume = () => { v.play().catch(() => {}) }
+    window.addEventListener('touchstart', resume, { once: true })
+    window.addEventListener('pointerdown', resume, { once: true })
+    return () => {
+      window.removeEventListener('touchstart', resume)
+      window.removeEventListener('pointerdown', resume)
     }
   }, [])
 
@@ -52,8 +68,10 @@ export default function Hero() {
     <section id="hero" className="hero">
       <div className="hero-bg" ref={bgRef}>
         <video
+          ref={setVideo}
           className="hero-video"
           src={`${import.meta.env.BASE_URL}videos/hero.mp4`}
+          poster={`${import.meta.env.BASE_URL}images/hero-poster.jpg`}
           autoPlay
           muted
           loop
