@@ -150,6 +150,26 @@
   padding: 11px 26px;
 }
 
+/* 手机菜单按钮（仅窄屏显示） */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform 0.3s var(--ease), opacity 0.3s;
+}
+
 /* ============================================================
    封面 Hero
    ============================================================ */

@@ -4,6 +4,7 @@ import { navItems, profile } from '../data/content'
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState('hero')
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -34,21 +35,33 @@ export default function Navbar() {
           <span className="nav-name">{profile.nameEn}</span>
         </a>
 
-        <nav className="nav-links">
+        <nav className={`nav-links ${open ? 'is-open' : ''}`}>
           {navItems.map((n) => (
             <a
               key={n.id}
               href={`#${n.id}`}
               className={active === n.id ? 'is-active' : ''}
+              onClick={() => setOpen(false)}
             >
               {n.label}
             </a>
           ))}
         </nav>
 
-        <a className="btn btn-primary nav-cta" href="#contact">
+        <a className="btn btn-primary nav-cta" href="#contact" onClick={() => setOpen(false)}>
           联系我
         </a>
+
+        <button
+          className="nav-toggle"
+          aria-label="打开菜单"
+          aria-expanded={open}
+          onClick={() => setOpen((o) => !o)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
       </div>
     </header>
   )

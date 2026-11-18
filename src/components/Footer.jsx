@@ -8,7 +8,11 @@ export default function Footer() {
 
   useEffect(() => {
     const v = videoRef.current
-    if (v) v.play().catch(() => {})
+    if (v) {
+      v.muted = true
+      v.defaultMuted = true
+      v.play().catch(() => {})
+    }
   }, [])
 
   return (

@@ -952,7 +952,39 @@
   }
 }
 
+/* ============================================================
+   响应式：平板（≤960px）
+   ============================================================ */
 @media (max-width: 960px) {
+  .container {
+    padding: 0 32px;
+  }
+
+  .section {
+    padding: 88px 0;
+  }
+
+  .section-head {
+    margin-bottom: 40px;
+    gap: 14px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .about-portrait {
+    max-width: 380px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .about-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
   .skills-layout {
     grid-template-columns: 1fr;
     gap: 36px;
@@ -960,5 +992,348 @@
 
   .skills-marquee {
     height: 440px;
+  }
+
+  .project-carousel {
+    height: 500px;
+  }
+
+  .hero-title {
+    font-size: 64px;
+  }
+
+  .hero-role {
+    font-size: 28px;
+  }
+
+  .hero-sub {
+    font-size: 18px;
+  }
+}
+
+/* ============================================================
+   响应式：手机（≤640px）
+   ============================================================ */
+@media (max-width: 640px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .section {
+    padding: 64px 0;
+  }
+
+  .section-head {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    gap: 12px;
+  }
+
+  .section-title {
+    font-size: 26px;
+  }
+
+  .section-note {
+    display: none;
+  }
+
+  /* 导航：折叠菜单 */
+  .nav-inner {
+    height: 60px;
+  }
+
+  .nav-cta {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+    color: #f5f9fd;
+  }
+
+  .navbar.is-scrolled .nav-toggle {
+    color: var(--text-primary);
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    padding: 8px 20px 16px;
+    background: rgba(20, 41, 74, 0.97);
+    backdrop-filter: blur(16px);
+    opacity: 0;
+    transform: translateY(-12px);
+    pointer-events: none;
+    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+  }
+
+  .nav-links.is-open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .nav-links a {
+    padding: 14px 0;
+    font-size: 16px;
+    color: #e6f0f8;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .navbar.is-scrolled .nav-links a,
+  .nav-links a:hover,
+  .nav-links a.is-active {
+    color: #ffffff;
+  }
+
+  .nav-links a:last-child {
+    border-bottom: none;
+  }
+
+  /* 封面 Hero */
+  .hero {
+    min-height: 92vh;
+    align-items: center;
+  }
+
+  .hero-eyebrow {
+    margin-bottom: 18px;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+  }
+
+  .hero-title {
+    font-size: clamp(44px, 13vw, 56px);
+    line-height: 1.08;
+  }
+
+  .hero-role {
+    margin-top: 14px;
+    font-size: 22px;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-sub {
+    max-width: 100%;
+    margin-top: 22px;
+    font-size: 15.5px;
+    line-height: 1.75;
+  }
+
+  .hero-actions {
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 28px;
+  }
+
+  .hero-scroll {
+    display: none;
+  }
+
+  .btn {
+    padding: 13px 24px;
+    font-size: 14px;
+  }
+
+  /* 个人信息 */
+  .about-grid {
+    gap: 28px;
+  }
+
+  .portrait-frame {
+    min-height: 0;
+    padding: 6px;
+  }
+
+  .portrait-img {
+    height: 340px;
+  }
+
+  .about-intro {
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .about-keywords {
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .about-keywords li {
+    padding: 7px 13px;
+    font-size: 13px;
+  }
+
+  .about-contact {
+    gap: 12px;
+    margin-top: 22px;
+  }
+
+  .contact-row {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
+  .about-label {
+    min-width: auto;
+    font-size: 14px;
+  }
+
+  .contact-row a,
+  .contact-value {
+    font-size: 15px;
+    white-space: normal;
+    word-break: break-all;
+  }
+
+  .about-courses {
+    margin-top: 28px;
+    gap: 12px;
+  }
+
+  .about-stats {
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .stat {
+    min-height: 0;
+    padding: 24px 14px;
+  }
+
+  .stat-value {
+    font-size: 30px;
+  }
+
+  .stat-label {
+    margin-top: 10px;
+    font-size: 12.5px;
+  }
+
+  /* 技能证书 */
+  .skills-intro {
+    max-width: 100%;
+    padding-left: 0;
+  }
+
+  .skills-intro-title {
+    margin-bottom: 22px;
+    font-size: 28px;
+  }
+
+  .skills-summary {
+    gap: 18px;
+  }
+
+  .skills-summary li {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .skills-summary-label {
+    flex: 0 0 auto;
+    font-size: 15px;
+  }
+
+  .skills-summary-text {
+    font-size: 15.5px;
+    line-height: 1.8;
+  }
+
+  .skills-marquee {
+    height: 380px;
+    gap: 12px;
+  }
+
+  .cert-card {
+    min-height: 110px;
+  }
+
+  /* 项目轮播 */
+  .project-carousel {
+    height: 460px;
+  }
+
+  .project-card {
+    width: min(86vw, 360px);
+  }
+
+  .project-cover {
+    height: 210px;
+  }
+
+  .project-body {
+    padding: 18px 20px 20px;
+  }
+
+  .project-card .project-title {
+    font-size: 18px;
+  }
+
+  .cover-index {
+    font-size: 48px;
+  }
+
+  .carousel-arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .carousel-arrow.prev {
+    left: 4px;
+  }
+
+  .carousel-arrow.next {
+    right: 4px;
+  }
+
+  .project-card.is-far {
+    opacity: 0.25;
+  }
+
+  /* 联系 Footer */
+  .footer {
+    min-height: auto;
+    align-items: flex-start;
+    padding: 80px 0;
+  }
+
+  .footer-eyebrow {
+    font-size: 13px;
+    letter-spacing: 0.2em;
+  }
+
+  .footer-title {
+    font-size: clamp(34px, 9vw, 44px);
+  }
+
+  .footer-links {
+    margin-top: 32px;
+  }
+
+  .footer-email {
+    font-size: clamp(18px, 5vw, 24px);
+    word-break: break-all;
+  }
+
+  .footer-meta {
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    margin-top: 20px;
+    font-size: 15px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    margin-top: 40px;
+    padding-top: 24px;
   }
 }

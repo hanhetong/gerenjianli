@@ -40,6 +40,14 @@ export default function Hero() {
     }
   }, [])
 
+  useEffect(() => {
+    const v = bgRef.current && bgRef.current.querySelector('video')
+    if (v) {
+      v.muted = true
+      v.defaultMuted = true
+    }
+  }, [])
+
   return (
     <section id="hero" className="hero">
       <div className="hero-bg" ref={bgRef}>
