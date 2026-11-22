@@ -127,7 +127,7 @@ export const projects = [
     description:
       '个人作品集简历网站，集中呈现个人信息、产品与数据分析实践项目、技能证书及联系方式；梳理站点信息架构与页面层级，组织项目案例与能力标签，完成页面结构、内容编排与交互浏览，便于访问者快速了解实践经历与能力方向。',
     tags: ['作品集网站', '信息架构', '内容梳理', '响应式页面'],
-    image: null,
+    image: `${import.meta.env.BASE_URL}images/works/p6-cover.png`,
     tone: 'gold'
   }
 ]
