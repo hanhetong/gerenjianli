@@ -194,6 +194,8 @@ export default function Projects() {
             ))}
           </div>
         </Reveal>
+
+        <p className="projects-load-note">网页加载需要时间，请耐心等待</p>
       </div>
     </section>
   )
