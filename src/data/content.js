@@ -104,6 +104,7 @@ export const projects = [
       '使用 Axure 搭建作品开场页的可点击原型，梳理元素入场顺序与页面衔接节奏，完成开场动画的交互流程与跳转反馈，便于演示与走查。',
     tags: ['Axure', '原型', '交互流程', '开场页'],
     image: null,
+    link: 'prototypes/intro/index.html',
     tone: 'rose'
   },
   {
