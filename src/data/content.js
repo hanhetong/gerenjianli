@@ -65,7 +65,8 @@ export const projects = [
     description:
       '老字号中药企业 × 音乐节联名活动，独立负责活动 H5 方案，梳理“社媒种草—投稿审核—积分兑换—O2O 引流—私域复购”业务闭环，输出信息架构、高保真原型与完整 PRD，并围绕 UV、转化率、积分兑换率、券核销率规划埋点。',
     tags: ['需求分析', '活动 H5', 'PRD', '原型'],
-    image: null,
+    image: `${import.meta.env.BASE_URL}images/works/p1-cover.jpg`,
+    coverFit: 'contain',
     link: 'prototypes/darentang/index.html',
     tone: 'gold'
   },
