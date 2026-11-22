@@ -114,7 +114,8 @@ export default function Projects() {
                   className={`project-card surface ${cls}${p.link ? ' is-linked' : ''}`}
                   onClick={() => {
                     if (p.link) {
-                      window.open(import.meta.env.BASE_URL + p.link, '_blank', 'noopener,noreferrer')
+                      const url = /^https?:\/\//i.test(p.link) ? p.link : import.meta.env.BASE_URL + p.link
+                      window.open(url, '_blank', 'noopener,noreferrer')
                     } else if (abs !== 0) {
                       go(i)
                     }

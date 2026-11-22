@@ -116,6 +116,7 @@ export const projects = [
       '围绕李叔同数字人文主题，梳理人物、作品、交游与典故等实体及其关联，设计网页端知识图谱的节点与连线结构、信息分层与交互浏览方式，支撑关系网络的直观呈现与检索。',
     tags: ['知识图谱', '实体关系', '信息可视化', '网页原型'],
     image: null,
+    link: 'https://xiaofirst423.github.io/yinian-hongyi/',
     tone: 'azure'
   },
   {
