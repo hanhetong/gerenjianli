@@ -612,6 +612,21 @@
   object-fit: cover;
 }
 
+/* 宽幅流程图：完整显示，配接近画布的浅色背景，隐藏网格与扫光 */
+.project-cover.cover-fit-contain {
+  background: #f4f6fa;
+}
+
+.project-cover.cover-fit-contain::before,
+.project-cover.cover-fit-contain::after {
+  display: none;
+}
+
+.project-cover.cover-fit-contain img {
+  object-fit: contain;
+  padding: 14px;
+}
+
 .cover-placeholder {
   position: relative;
   z-index: 1;

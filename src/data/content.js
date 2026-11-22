@@ -91,7 +91,8 @@ export const projects = [
     description:
       '基于 Dify 设计智能体会话流程、知识库与异常兜底方案，覆盖电商客服问答与营销数据解读，重点处理边界场景与回答可靠性。',
     tags: ['AI 产品', '工作流', '知识库', '兜底设计'],
-    image: null,
+    image: `${import.meta.env.BASE_URL}images/works/p3-cover.jpg`,
+    coverFit: 'contain',
     tone: 'bronze'
   },
   {

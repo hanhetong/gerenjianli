@@ -126,7 +126,7 @@ export default function Projects() {
                     transform: `translate(-50%, -50%) translateX(${d * step}px) scale(${scale})`
                   }}
                 >
-                  <div className={`project-cover tone-${p.tone}`}>
+                  <div className={`project-cover tone-${p.tone}${p.coverFit === 'contain' ? ' cover-fit-contain' : ''}`}>
                     {p.image ? (
                       <img src={p.image} alt={p.title} />
                     ) : (
