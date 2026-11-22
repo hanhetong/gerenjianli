@@ -78,7 +78,8 @@ export const projects = [
     description:
       '面向企业设备管理人员，梳理设备多条件查询、新增、编辑、删除与分页的全流程，定义列表字段、使用状态（使用中 / 闲置）与操作权限规则，输出业务流程图、后台原型与精简 PRD，支撑行政与产研日常管理。',
     tags: ['B 端', '后台', '业务流程', '权限'],
-    image: null,
+    image: `${import.meta.env.BASE_URL}images/works/p2-cover.jpg`,
+    coverFit: 'contain',
     link: 'prototypes/backend/index.html',
     tone: 'azure'
   },
@@ -104,7 +105,8 @@ export const projects = [
     description:
       '使用 Axure 搭建作品开场页的可点击原型，梳理元素入场顺序与页面衔接节奏，完成开场动画的交互流程与跳转反馈，便于演示与走查。',
     tags: ['Axure', '原型', '交互流程', '开场页'],
-    image: null,
+    image: `${import.meta.env.BASE_URL}images/works/p4-cover.jpg`,
+    coverFit: 'contain',
     link: 'prototypes/intro/index.html',
     tone: 'rose'
   },
@@ -117,7 +119,8 @@ export const projects = [
     description:
       '围绕李叔同数字人文主题，梳理人物、作品、交游与典故等实体及其关联，设计网页端知识图谱的节点与连线结构、信息分层与交互浏览方式，支撑关系网络的直观呈现与检索。',
     tags: ['知识图谱', '实体关系', '信息可视化', '网页原型'],
-    image: null,
+    image: `${import.meta.env.BASE_URL}images/works/p5-cover.jpg`,
+    coverFit: 'contain',
     link: 'https://xiaofirst423.github.io/yinian-hongyi/',
     tone: 'azure'
   },
