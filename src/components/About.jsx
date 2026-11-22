@@ -1,7 +1,7 @@
 import { profile } from '../data/content'
 import Reveal from './Reveal'
 
-const keywords = ['需求分析', 'PRD 文档', '业务流程', '高保真原型', 'SQL', 'Excel', '指标体系', '数据可视化']
+const keywords = ['需求分析', 'PRD 文档', '业务流程', '高保真原型', 'SQL', 'Excel', '数据可视化']
 
 const contactRows = [
   {
