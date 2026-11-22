@@ -42,7 +42,8 @@ export const certificates = [
   { id: 'c1', name: '计算机三级 · 网络安全', issuer: '全国计算机等级考试', year: '2025', placeholder: false },
   { id: 'c2', name: '计算机三级 · 数据库', issuer: '全国计算机等级考试', year: '2025', placeholder: false },
   { id: 'c3', name: '数客杯二等奖', issuer: '天津市数客杯竞赛', year: '2026', placeholder: false },
-  { id: 'c4', name: '大学英语四级 CET-4', issuer: '大学英语四六级考试', year: '2025', placeholder: false }
+  { id: 'c4', name: '大学英语四级 CET-4', issuer: '大学英语四六级考试', year: '2025', placeholder: false },
+  { id: 'c5', name: '创新创业大赛第四名', issuer: '南开区创新创业大赛', year: '2025', placeholder: false }
 ]
 
 // 技能知识说明（左栏文字）
@@ -65,6 +66,7 @@ export const projects = [
       '老字号中药企业 × 音乐节联名活动，独立负责活动 H5 方案，梳理“社媒种草—投稿审核—积分兑换—O2O 引流—私域复购”业务闭环，输出信息架构、高保真原型与完整 PRD，并围绕 UV、转化率、积分兑换率、券核销率规划埋点。',
     tags: ['需求分析', '活动 H5', 'PRD', '原型'],
     image: null,
+    link: 'prototypes/darentang/index.html',
     tone: 'gold'
   },
   {
@@ -77,6 +79,7 @@ export const projects = [
       '面向企业设备管理人员，梳理设备多条件查询、新增、编辑、删除与分页的全流程，定义列表字段、使用状态（使用中 / 闲置）与操作权限规则，输出业务流程图、后台原型与精简 PRD，支撑行政与产研日常管理。',
     tags: ['B 端', '后台', '业务流程', '权限'],
     image: null,
+    link: 'prototypes/backend/index.html',
     tone: 'azure'
   },
   {

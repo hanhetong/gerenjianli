@@ -111,8 +111,14 @@ export default function Projects() {
               return (
                 <article
                   key={p.id}
-                  className={`project-card surface ${cls}`}
-                  onClick={() => abs !== 0 && go(i)}
+                  className={`project-card surface ${cls}${p.link ? ' is-linked' : ''}`}
+                  onClick={() => {
+                    if (p.link) {
+                      window.open(import.meta.env.BASE_URL + p.link, '_blank', 'noopener,noreferrer')
+                    } else if (abs !== 0) {
+                      go(i)
+                    }
+                  }}
                   style={{
                     transform: `translate(-50%, -50%) translateX(${d * step}px) scale(${scale})`
                   }}
@@ -141,6 +147,15 @@ export default function Projects() {
                         <li key={t}>{t}</li>
                       ))}
                     </ul>
+
+                    {p.link ? (
+                      <span className="project-link-hint">
+                        点击查看可交互原型
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <path d="M7 17 17 7M9 7h8v8" />
+                        </svg>
+                      </span>
+                    ) : null}
                   </div>
                 </article>
               )

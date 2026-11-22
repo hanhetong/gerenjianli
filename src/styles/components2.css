@@ -758,6 +758,29 @@
   border-color: var(--accent);
 }
 
+.project-card.is-linked {
+  cursor: pointer;
+}
+
+.project-link-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  font-size: 13.5px;
+  color: var(--accent);
+  transition: gap 0.3s;
+}
+
+.project-link-hint svg {
+  width: 16px;
+  height: 16px;
+}
+
+.project-card.is-linked:hover .project-link-hint {
+  gap: 12px;
+}
+
 /* ============================================================
    联系 Footer
    ============================================================ */
