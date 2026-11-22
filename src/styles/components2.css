@@ -131,13 +131,13 @@
 
 .about-keywords {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  flex-wrap: nowrap;
+  gap: 8px;
   margin-top: 26px;
 }
 
 .about-keywords li {
-  padding: 8px 16px;
+  padding: 8px 13px;
   font-size: 14px;
   color: var(--text-secondary);
   border: 1px solid var(--border);
