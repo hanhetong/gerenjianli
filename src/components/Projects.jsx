@@ -111,11 +111,13 @@ export default function Projects() {
               return (
                 <article
                   key={p.id}
-                  className={`project-card surface ${cls}${p.link ? ' is-linked' : ''}`}
+                  className={`project-card surface ${cls}${p.link || p.anchor ? ' is-linked' : ''}`}
                   onClick={() => {
                     if (p.link) {
                       const url = /^https?:\/\//i.test(p.link) ? p.link : import.meta.env.BASE_URL + p.link
                       window.open(url, '_blank', 'noopener,noreferrer')
+                    } else if (p.anchor) {
+                      document.getElementById(p.anchor)?.scrollIntoView({ behavior: 'smooth' })
                     } else if (abs !== 0) {
                       go(i)
                     }
@@ -154,6 +156,13 @@ export default function Projects() {
                         点击查看可交互原型
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                           <path d="M7 17 17 7M9 7h8v8" />
+                        </svg>
+                      </span>
+                    ) : p.anchor ? (
+                      <span className="project-link-hint">
+                        点击返回封面
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <path d="M12 19V5M5 12l7-7 7 7" />
                         </svg>
                       </span>
                     ) : null}
