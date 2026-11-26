@@ -918,6 +918,35 @@
   color: #fff;
 }
 
+/* 查看简历按钮：暖金描边，悬停实心，与深色背景协调 */
+.resume-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 36px;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid rgba(230, 197, 135, 0.55);
+  border-radius: var(--radius);
+  transition: background 0.3s, color 0.3s, border-color 0.3s, transform 0.3s;
+}
+
+.resume-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.resume-btn:hover {
+  color: #1a1408;
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
 /* ============================================================
    发光蝴蝶与光带
    ============================================================ */
