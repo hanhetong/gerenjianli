@@ -918,7 +918,7 @@
   color: #fff;
 }
 
-/* 查看简历按钮：暖金描边，悬停实心，与深色背景协调 */
+/* 查看简历按钮：深蓝实心 + 白字，在浅蓝背景上清晰 */
 .resume-btn {
   display: inline-flex;
   align-items: center;
@@ -928,11 +928,12 @@
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: var(--accent);
-  background: var(--accent-soft);
-  border: 1px solid rgba(230, 197, 135, 0.55);
+  color: #ffffff;
+  background: var(--accent);
+  border: 1px solid var(--accent);
   border-radius: var(--radius);
-  transition: background 0.3s, color 0.3s, border-color 0.3s, transform 0.3s;
+  box-shadow: 0 6px 18px rgba(20, 41, 74, 0.25);
+  transition: background 0.3s, border-color 0.3s, transform 0.3s;
 }
 
 .resume-btn svg {
@@ -941,9 +942,9 @@
 }
 
 .resume-btn:hover {
-  color: #1a1408;
-  background: var(--accent);
-  border-color: var(--accent);
+  color: #ffffff;
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
   transform: translateY(-2px);
 }
 
