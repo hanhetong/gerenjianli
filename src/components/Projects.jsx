@@ -7,6 +7,7 @@ const AUTOPLAY_MS = 4500
 export default function Projects() {
   const [active, setActive] = useState(0)
   const [step, setStep] = useState(150)
+  const [detail, setDetail] = useState(null)
   const count = projects.length
   const dragStart = useRef(null)
   const hoverRef = useRef(false)
@@ -53,6 +54,25 @@ export default function Projects() {
 
   const prev = () => go(active - 1)
   const next = () => go(active + 1)
+
+  // 弹窗打开时锁定背景滚动、暂停轮播自动播放，并支持 Esc 关闭
+  useEffect(() => {
+    if (!detail) {
+      startTimer()
+      return
+    }
+    clearTimer()
+    const onKey = (e) => {
+      if (e.key === 'Escape') setDetail(null)
+    }
+    document.addEventListener('keydown', onKey)
+    const prevOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.body.style.overflow = prevOverflow
+    }
+  }, [detail, clearTimer, startTimer])
 
   useEffect(() => {
     startTimer()
@@ -111,8 +131,12 @@ export default function Projects() {
               return (
                 <article
                   key={p.id}
-                  className={`project-card surface ${cls}${p.link || p.anchor ? ' is-linked' : ''}`}
+                  className={`project-card surface ${cls}${p.link || p.anchor || p.detailImage ? ' is-linked' : ''}`}
                   onClick={() => {
+                    if (p.detailImage) {
+                      setDetail(p)
+                      return
+                    }
                     if (p.link) {
                       const url = /^https?:\/\//i.test(p.link) ? p.link : import.meta.env.BASE_URL + p.link
                       window.open(url, '_blank', 'noopener,noreferrer')
@@ -165,6 +189,13 @@ export default function Projects() {
                           <path d="M12 19V5M5 12l7-7 7 7" />
                         </svg>
                       </span>
+                    ) : p.detailImage ? (
+                      <span className="project-link-hint">
+                        点击查看完整流程图
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <path d="M7 17 17 7M9 7h8v8" />
+                        </svg>
+                      </span>
                     ) : null}
                   </div>
                 </article>
@@ -197,6 +228,20 @@ export default function Projects() {
 
         <p className="projects-load-note">网页加载需要时间，请耐心等待</p>
       </div>
+
+      {detail && (
+        <div className="project-lightbox" onClick={() => setDetail(null)} role="dialog" aria-modal="true" aria-label={detail.title}>
+          <button className="lightbox-close" aria-label="关闭流程图" onClick={() => setDetail(null)}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M18 6 6 18M6 6l12 12" />
+            </svg>
+          </button>
+          <figure className="lightbox-figure" onClick={(e) => e.stopPropagation()}>
+            <img src={detail.detailImage} alt={`${detail.title}完整工作流程图`} />
+            <figcaption>{detail.title} · 完整工作流程图</figcaption>
+          </figure>
+        </div>
+      )}
     </section>
   )
 }

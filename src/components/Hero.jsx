@@ -1,5 +1,8 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useCallback } from 'react'
 import { profile } from '../data/content'
+
+const VIDEO_SRC = `${import.meta.env.BASE_URL}videos/hero.mp4`
+const VIDEO_POSTER = `${import.meta.env.BASE_URL}images/hero-poster.jpg`
 
 const particles = Array.from({ length: 40 }, (_, i) => ({
   left: (i * 37 + 13) % 100,
@@ -15,6 +18,7 @@ export default function Hero() {
   const particlesRef = useRef(null)
   const spotlightRef = useRef(null)
   const videoRef = useRef(null)
+  const attachedRef = useRef(false)
 
   const setVideo = (el) => {
     videoRef.current = el
@@ -26,6 +30,16 @@ export default function Hero() {
     el.setAttribute('x5-playsinline', '')
     el.setAttribute('x5-video-player-type', 'h5-page')
   }
+
+  // 延后挂载视频源：首屏先用海报图渲染，页面空闲或首次触点后再下载播放，避免大 mp4 阻塞首屏
+  const attachVideo = useCallback(() => {
+    const v = videoRef.current
+    if (!v || attachedRef.current) return
+    attachedRef.current = true
+    v.src = VIDEO_SRC
+    v.load()
+    v.play().catch(() => {})
+  }, [])
 
   useEffect(() => {
     let raf = 0
@@ -53,16 +67,25 @@ export default function Hero() {
   }, [])
 
   useEffect(() => {
-    const v = videoRef.current
-    if (!v) return
-    const resume = () => { v.play().catch(() => {}) }
-    window.addEventListener('touchstart', resume, { once: true })
-    window.addEventListener('pointerdown', resume, { once: true })
-    return () => {
-      window.removeEventListener('touchstart', resume)
-      window.removeEventListener('pointerdown', resume)
+    let timer = null
+    const onLoad = () => attachVideo()
+    if (document.readyState === 'complete') {
+      onLoad()
+    } else {
+      window.addEventListener('load', onLoad)
     }
-  }, [])
+    // 兜底：load 事件迟迟不触发时，2.5s 后再挂载
+    timer = setTimeout(attachVideo, 2500)
+    const onFirst = () => attachVideo()
+    window.addEventListener('touchstart', onFirst, { once: true })
+    window.addEventListener('pointerdown', onFirst, { once: true })
+    return () => {
+      window.removeEventListener('load', onLoad)
+      if (timer) clearTimeout(timer)
+      window.removeEventListener('touchstart', onFirst)
+      window.removeEventListener('pointerdown', onFirst)
+    }
+  }, [attachVideo])
 
   return (
     <section id="hero" className="hero">
@@ -70,9 +93,8 @@ export default function Hero() {
         <video
           ref={setVideo}
           className="hero-video"
-          src={`${import.meta.env.BASE_URL}videos/hero.mp4`}
-          poster={`${import.meta.env.BASE_URL}images/hero-poster.jpg`}
-          autoPlay
+          poster={VIDEO_POSTER}
+          preload="none"
           muted
           loop
           playsInline
